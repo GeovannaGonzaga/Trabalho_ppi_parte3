@@ -141,4 +141,30 @@ body{
 }
  .Register{
     margin-top: 7%;display: flex; justify-content: center;
-}    
+} 
+
+input.invalid {
+    border: 2px solid red;
+}
+  .error-message {
+    color: red;
+    font-size: 14px;
+  }
+
+  .Campo_Obrigatorio {
+    color: red !important;
+    text-decoration: none;
+    font-size: 15px;
+  }
+
+footer{
+    text-align: center; background-color:#c8e2f8;
+}
+
+#direitos{
+    margin-bottom: 1px;
+}
+
+footer img{
+    width: 80px; height:80px;
+}

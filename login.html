@@ -8,57 +8,69 @@
   <link href="cadastro.css" rel="stylesheet">
 </head>
 <body>
-  <div class="home">
-    <a href="index.html">
-      <img src="imagens/logo/1-removebg-preview.png" alt="logo">
-    </a>
-  </div>
 
-  <div class="login">
-    <p>
-      <img src="https://img.icons8.com/small/40/127dbb/add-user-male.png"/>
-      Login do Cliente
-    </p>
-  </div>
+  <header>
+    <div class="home">
+      <a href="index.html">
+        <img src="imagens/logo/1-removebg-preview.png" alt="logo">
+      </a>
+    </div>
+  </header>
 
-  <form onsubmit="checkLogin(event)">
-    <div class="telalogin">
-      <div class="row mb-4">
-        <div class="col-sm-12 form-floating">
-          <input type="text" class="form-control" id="username" placeholder="Ex. joaodasilva@gmail.com">
-          <label for="floatingInput">E-mail:</label>
-        </div>
-      </div>
+  <main>
+    <div class="login">
+      <p>
+        <img src="https://img.icons8.com/small/40/127dbb/add-user-male.png"/>
+        Login do Cliente
+      </p>
+    </div>
 
-      <div class="row mb-4 password">
-        <a href="">Esqueceu?</a>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="password" placeholder="Senha">
-          <label for="floatingPassword">Senha:</label>
-        </div>
-        <div class="col-12">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
-            <label class="form-check-label" for="autoSizingCheck2">
-              Remember me
-            </label>
+    <form onsubmit="checkLogin(event)">
+      <div class="telalogin">
+        <div class="row mb-4">
+          <div class="col-sm-12 form-floating">
+            <input type="text" class="form-control" id="username" placeholder="Ex. joaodasilva@gmail.com">
+            <label for="floatingInput">E-mail:</label>
           </div>
         </div>
+
+        <div class="row mb-4 password">
+          <a href="">Esqueceu?</a>
+          <div class="form-floating">
+            <input type="password" class="form-control" id="password" placeholder="Senha">
+            <label for="floatingPassword">Senha:</label>
+          </div>
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+              <label class="form-check-label" for="autoSizingCheck2">
+                Remember me
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">
+            Continuar
+          </button>
+        </div>
+
+        <p class="Register">
+          Não tem cadastro? <a href="cadastro.html">Cadastre-se</a>
+        </p><br>
       </div>
+    </form>
+  </main>
 
-      <div class="col-auto">
-        <button type="submit" class="btn btn-primary">
-          Continuar
-        </button>
-      </div>
+  <footer class="container-fluid"><br>
+    <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
+  </footer>
 
-      <p class="Register">
-        Não tem cadastro? <a href="cadastro.html">Cadastre-se</a>
-      </p><br>
-    </div>
-  </form>
 
-  <script src="script.js"></script> <!-- Chamada para o arquivo JavaScript separado -->
+  <script src="script.js"></script> 
+  <script src="Validations/telefone.js"></script>
+  <script src="Validations/Validar_Entrada.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 </body>
 </html>

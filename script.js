@@ -15,36 +15,12 @@ function checkLogin(event) {
     alert('Usuário ou senha incorretos. Tente novamente.');
   }
 }
-// validation
-document.addEventListener("DOMContentLoaded", function() {
-  const emailInput = document.querySelector("#emailInput");
-  const telefoneInput = document.querySelector("#telefoneInput");
-  const cpfInput = document.querySelector("#cpfInput");
-  const form = document.querySelector("#cadastro-form");
 
-  form.addEventListener("submit", function(event) {
-    let isValid = true;
+// validation limpar erro - Criado por Geovanna
+function limparErro() {
+  document.getElementById("telefoneError").innerText = "";
+}
 
-    if (emailInput.value.indexOf('@') === -1) {
-      alert("O email precisa conter um '@'.");
-      isValid = false;
-    }
-
-    if (telefoneInput.value.length < 5) {
-      alert("O número de telefone precisa ter pelo menos 5 dígitos.");
-      isValid = false;
-    }
-
-    if (cpfInput.value.length < 5) {
-      alert("O CPF precisa ter pelo menos 5 dígitos.");
-      isValid = false;
-    }
-
-    if (!isValid) {
-      event.preventDefault();
-    }
-  });
-});
 
 // uploadImage
 
