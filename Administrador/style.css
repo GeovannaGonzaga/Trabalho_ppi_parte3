@@ -1,0 +1,165 @@
+/* styles.css */
+.navbar-container {
+    background-color: #c8e2f8;
+    width: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+    .home {
+        height: 80px;
+        width: 80px;
+    }
+    .home a img {
+        width: 140px;
+        height: 180px;
+        padding-bottom: 100%;
+    }
+    .form-container {
+        width: 80%;
+        height: 100%;
+    } 
+}
+@media (max-width: 999.98px) {
+    .home {
+        height: 70px;
+        width: 70px;
+    }
+    .home a img {
+        width: 110px;
+        height: 160px;
+        padding-bottom: 100%;
+    }
+    .form-container {
+        width: 65%;
+        height: 100%;
+    } 
+}
+@media (max-width: 535px) { 
+
+    .home {
+        height: 60px;
+        width: 60px;
+    }
+    .home a img {
+        width: 90px;
+        height: 140px;
+        padding-bottom: 100%;
+    }
+    .form-container {
+        width: 60%;
+        height: 100%;
+    } 
+}
+
+.btn-outline {
+    background-color: #ffffff;
+}
+
+.offcanvas-title {
+    color: #127dbb;
+    font-size: 18px;
+}
+
+.nav-link img {
+    margin-right: 2px;
+}
+
+.Information {
+    margin-bottom: 0;
+    font-size: 12px;
+    color: rgb(61, 59, 59);
+    margin-left: 2%;
+}
+
+.Options {
+    color: #127dbb;
+    font-size: 18px;
+    height: 10px;
+    padding-left: 2%;
+}
+
+.itens {
+    color: #127dbb;
+    font-size: 18px;
+}
+
+.color{
+    color:red
+}
+.nav-item.active.border-bottom {
+    border-top: none;
+}
+
+.nav-item.active.border-bottom.inline-flex {
+    border-top: none;
+}
+
+.offcanvas-header {
+    border-bottom: 3px solid #127dbb;
+}
+
+#floating-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    z-index: 999;
+  }
+  
+  #floating-icon img {
+    width: 50px;
+    height: 50px;
+  }
+
+
+.sobrenos {
+    background-color: rgb(222, 236, 247);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: 0 auto;
+}
+
+.sobrenos h1{
+    color: #333;
+    text-align: center;
+}
+.sobrenos h2 {
+    color: #333;
+    text-align: left;
+}
+
+.sobrenos p {
+    color: #555;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.sobrenos h1:hover,.sobrenos h2:hover {
+    color: #127dbb;
+}
+
+.listagem{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+}
+  
+
+h2{
+    text-align: center;
+}
+
+footer{
+    text-align: center; background-color:#c8e2f8;
+}
+
+#direitos{
+    margin-bottom: 1px;
+}
+
+footer img{
+    width: 80px; height:80px;
+}

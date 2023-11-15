@@ -1,0 +1,14 @@
+.rounded-start{
+    width: 250px;
+    height: 250px;
+}
+
+.float-end{
+    width: 250px;
+    height: 250px;
+}
+
+.container{
+    padding-left:10%; 
+    padding-right:10%;
+}
