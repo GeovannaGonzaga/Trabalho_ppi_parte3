@@ -1,74 +1,98 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
-  <title>Páginas do Usuário</title>
-</head>
-<body>
-  <nav class="navbar navbar-light navbar-container" id="navbar">  
-    <div class="home"><a href="index.html"><img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
-    <form class="d-flex form-container">
-        <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search">
-        <button class="btn btn-outline" type="submit">Pesquisar</button>
-    </form>
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header border-bottom border-3 border-primary">
-          <a href="login.html" style="text-decoration: none;">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                  <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, Usuário
-              </h5>
-          </a>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-      </div>
-      <br>
-      <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1">
-          <li class="nav-item">
-            <p class="Information">Serviços</p>
-            <a class="nav-link active border-bottom border-top" href="produtos.html">
-              <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet">
+    <title> Bios </title>
+  </head>
+  <body>
+
+    <nav class="navbar navbar-light navbar-container" id="navbar">
+      <div class="home"><a href="index.html"> <img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
+      <form class="d-flex form-container">
+          <input class="form-control me-2" type="search" placeholder="busque aqui o produto desejado" aria-label="Search">
+          <button class="btn btn-outline" type="submit">search</button>
+      </form>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header border-bottom border-3 border-primary">
+            <a href="login.html" style="text-decoration: none;">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                    <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, Usúario
+                </h5>
             </a>
-            <br>
-            <p class="Information">Gerais</p>
-            <a class="nav-link active border-bottom border-top" href="#">
-              <p class="Options"><img src="https://img.icons8.com/ios/22/127dbb/settings.png"> Configurações</p>
-            </a>
-            <br>
-            <p class="Information">Central de atendimento</p>
-            <a class="nav-link active border-bottom border-top" href="fale.html">
-              <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
-            </a>
-            <br>
-            <p class="Information">Sair</p>
-            <a class="nav-link active border-bottom border-top" href="index.html">
-              <p class="Options"><img src="https://img.icons8.com/ios/19/127dbb/exit--v1.png"/> Sair</p>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <section class="mt-4" id="conteudo">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-sm-6 col-lg-9">
-          <form action="upload.php" method="post" enctype="multipart/form-data">
-            <h3>Upload de Imagem</h3>
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <input type="submit" value="Fazer Upload da Imagem" name="submit">
-          </form>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-      </div>
-    </div>
-  </section>
+        <br>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1">
+                <li class="nav-item">
+                    <p class="Information">Serviços</p>
+                    <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.html">
+                      <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
+                    </a>
+            
+                    <br><p class="Information">Sobre o site</p>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-</body>
+                    <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.html">
+                      <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
+                    </a>
+                    <a class="nav-link active border-bottom border-top" aria-current="page" href="configuracao_usuario.html">
+                      <p class="Options"><img src="https://img.icons8.com/ios/22/127dbb/settings.png"> Configurações</p>
+                    </a>
+                    <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
+                      <p class="Options"><img src="https://img.icons8.com/ios/19/127dbb/exit--v1.png"/> Excluir a conta</p>
+                    </a>
+
+                    <br><p class="Information">Central de atendimento</p>
+
+                    <a class="nav-link active border-bottom border-top" aria-current="page" href="fale.html">
+                      <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
+                    </a>
+
+                    <br><p class="Information">Sair</p>
+
+                    <a class="nav-link active border-bottom border-top" aria-current="page" href="index.html">
+                      <p class="Options"><img src="https://img.icons8.com/ios/19/127dbb/exit--v1.png"/> Sair</p>
+                    </a>
+
+                </li>
+        </div>
+    </nav>
+
+      <section id="slides">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner ">
+              <div class="carousel-item active">
+                <img src="imagens/Modal/Slide1.PNG" class="img-fluid" alt="Bios"> <!-- https://source.unsplash.com/1400x500/?jakets < em 1400x500 coloca a altura e largura> <depois do ? coloca o nome do que voce quer ver> -->
+              </div>
+              <div class="carousel-item">
+                <img src="imagens/Modal/Slide2.PNG" class="d-block w-100" alt="Bios">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+      </section>
+        <hr class="container"><p class="text-center"> ©2023 todos direitos reservados | Esse template foi feito por Bios</p><br>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+  </body>
 </html>
