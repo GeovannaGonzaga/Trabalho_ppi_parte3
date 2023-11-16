@@ -13,7 +13,7 @@
 
   <header>
     <div class="home">
-      <a href="index.html">
+      <a href="index.php">
         <img src="imagens/logo/1-removebg-preview.png" alt="logo">
       </a>
     </div>
@@ -38,14 +38,14 @@
             <span id="EmailError" class="error-message"></span>
           </div>
         </div>
-        <div class="row mb-4 password">
-          <a href="">Esqueceu?</a>
-          <div class="form-floating">
-            <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Senha" onblur="validarSenha(this)">
-            <label for="floatingPassword">Senha:</label>
-            <span id="passwordError" class="error-message"></span>
+
+        <div class="row mb-3 password">
+            <div class="form-floating">
+              <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Senha"  onblur="validarSenha(this)">
+              <label for="floatingPassword">Senha:</label>
+              <span id="passwordError" class="error-message"></span>
+            </div>
           </div>
-        </div>
 
         <?php
           if (isset($_GET["erro"]) && $_GET["erro"] == 1) {

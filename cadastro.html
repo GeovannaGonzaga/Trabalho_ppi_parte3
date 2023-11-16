@@ -19,65 +19,59 @@
         <p><img src="https://img.icons8.com/small/40/127dbb/add-user-male.png"> Criar seu Cadastro</p>
       </div>
       <div class="telacadastro">
-        <form id="cadastro-form">
+        <form id="cadastro-form" action="PHP/processar_cadastro.php" method="post">
           <div class="row mb-3">
            <div class="col-sm-12 form-floating">
-              <input type="text" class="form-control" id="nomeInput" placeholder="Nome Completo" onblur="ValidarNome(this)" >
+              <input type="text" class="form-control" id="nomeInput" name="nomeInput" placeholder="Nome Completo" onblur="ValidarNome(this)" >
               <label for="floatingInput" placeholder="Nome Completo">Nome:</label>
               <span id="NomeError" class="error-message"></span>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-4 form-check flexRadioDefault1">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-              <label class="form-check-label" for="flexRadioDefault1">
-                Feminino
-              </label>
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="Feminino">
+               <label class="form-check-label" for="flexRadioDefault1">Feminino</label>
             </div>
             <div class="col-sm-4 form-check flexRadioDefault2">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
-              <label class="form-check-label" for="flexRadioDefault2">
-                Masculino
-              </label>
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Masculino">
+               <label class="form-check-label" for="flexRadioDefault2">Masculino</label>
             </div>
             <div class="col-sm-4 form-check flexRadioDefault3">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" checked>
-              <label class="form-check-label" for ="flexRadioDefault3">
-                Não informar
-              </label>
+               <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" value="Não informar" checked>
+               <label class="form-check-label" for="flexRadioDefault3">Não informar</label>
             </div>
-          </div>
+         </div>
           <div class="row mb-3">
             <div class="col-sm-12 form-floating">
-              <input type="text" class="form-control" id="cpfInput" placeholder="CPF"  onblur="validarcpf(this); Acpted_Number(event)" >
+              <input type="text" class="form-control" id="cpfInput" name="cpfInput" placeholder="CPF"  onblur="validarcpf(this); Acpted_Number(event)" >
               <label for="floatingInput">CPF:</label>
               <span id="CpfError" class="error-message"></span>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-12 form-floating">
-              <input type="date" class="form-control" id="nascimentoInput" placeholder="Data de nascimento" onblur="validarDataNascimento(this)">
+              <input type="date" class="form-control" id="nascimentoInput"  name="nascimentoInput" placeholder="Data de nascimento" onblur="validarDataNascimento(this)">
               <label for="floatingInput">Data de Nascimento:</label>
               <span id="DataError" class="error-message"></span>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-12 form-floating">
-              <input type="text" class="form-control" id="telefoneInput" placeholder="(00) 00000-0000" onblur="validarTelefone(this); Acpted_Number(event)">
+              <input type="text" class="form-control" id="telefoneInput" name="telefoneInput" placeholder="(00) 00000-0000" onblur="validarTelefone(this); Acpted_Number(event)"> 
               <label for="floatingInput">Telefone:</label>
               <span id="telefoneError" class="error-message"></span>
             </div>
           </div>
           <div class="row mb-3">
             <div class="col-sm-12 form-floating">
-              <input type="text" class="form-control" id="emailInput" placeholder="Ex. joaodasilva@gmail.com"  onblur="validarEmail(this)">
+              <input type="text" class="form-control" id="emailInput" name="emailInput" placeholder="Ex. joaodasilva@gmail.com"  onblur="validarEmail(this)">
               <label for="floatingInput">E-mail:</label>
               <span id="EmailError" class="error-message"></span>
             </div>
           </div>
           <div class="row mb-3 password">
             <div class="form-floating">
-              <input type="password" class="form-control" id="passwordInput" placeholder="Senha"  onblur="validarSenha(this)">
+              <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Senha"  onblur="validarSenha(this)">
               <label for="floatingPassword">Senha:</label>
               <span id="passwordError" class="error-message"></span>
             </div>
@@ -85,9 +79,10 @@
           <div class="row mb-3">
             <div>
               <p>Tipo de Cadastro:</p>
-              <select class="form-select" class="form-control" id="tipoCadastro" aria-label="Default select example">
+              <select class="form-select" class="form-control" id="tipoCadastro" name="tipoCadastro" aria-label="Default select example">
                 <option selected>Selecione</option>
                 <option value="1">Usuário</option>
+                <option value="2">Administrador</option>
               </select>
             </div>
           </div>
@@ -96,7 +91,7 @@
               <button type="submit" class="btn btn-primary" id="Cadastro">Cadastrar-se</button>
             </div>
           </div>
-          <p class="Register">Já tem cadastro? <a href="login.html">Entrar</a></p><br>
+          <p class="Register">Já tem cadastro? <a href="login.php">Entrar</a></p><br>
         </form>
       </div> 
     </main>
