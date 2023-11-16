@@ -1,3 +1,34 @@
+<?php
+include('../PHP/conexao.php');
+
+$conexao = new Conexao();
+$conn = $conexao->conexao;
+
+// Verifica se há um termo de pesquisa na URL
+$termo_pesquisa = isset($_GET['termo_pesquisa']) ? $_GET['termo_pesquisa'] : '';
+
+// Modifica a consulta SQL para incluir a cláusula WHERE com base no termo de pesquisa
+$query = "SELECT * FROM produtos";
+if (!empty($termo_pesquisa)) {
+    $query .= " WHERE nome_produto LIKE :termo_pesquisa 
+                OR categoria LIKE :termo_pesquisa 
+                OR preco LIKE :termo_pesquisa";
+}
+
+// Prepara e executa a consulta SQL
+$stmt = $conn->prepare($query);
+
+if (!empty($termo_pesquisa)) {
+    $termo_pesquisa_like = "%$termo_pesquisa%";
+    $stmt->bindParam(':termo_pesquisa', $termo_pesquisa_like, PDO::PARAM_STR);
+}
+
+$stmt->execute();
+$produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$conexao->fecharConexao();
+?>
+
+
 <!doctype html>
 <html lang="pt-br">
   <head>
@@ -16,7 +47,7 @@
         <nav class="navbar navbar-light navbar-container" id="navbar">  
         <div class="home"><a href="pagina_usuario.php"><img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
         <form class="d-flex form-container">
-            <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search" name="termo_pesquisa">
             <button class="btn btn-outline" type="submit">Pesquisar</button>
         </form>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -79,193 +110,36 @@
     </header>
 
     <main>
-    <section id="slides">
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            </div>
-            <div class="carousel-inner ">
-              <div class="carousel-item active">
-                <img src="imagens/Modal/Slide1.PNG" class="img-fluid" alt="modal"> <!-- https://source.unsplash.com/1400x500/?jakets < em 1400x500 coloca a altura e largura> <depois do ? coloca o nome do que voce quer ver> -->
-              </div>
-              <div class="carousel-item">
-                <img src="imagens/Modal/Slide2.PNG" class="img-fluid" alt="modal">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-      </section>
 
       <p class="title-products" >Produtos</p>
       <section id="conteudo">
         <div class="row ">
           <div class="col-md-12 col-sm-12 col-lg-12 ">
 
-              <div class="row"> 
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/bagcroche.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 49,99</strong></p>
-                          <p class="card-text">Bolsa de Crochê</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button" >-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1" >
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
+          <div class="row">
+                    <?php
+                      foreach ($produtos as $produto) {
+                        echo '<div class="col col-md-3">
+                                    <div class="card"> 
+                                        <img src="data:image/png;base64,' . base64_encode($produto['imagem']) . '" class="card-image" alt="' . $produto["nome_produto"] . '">
+                                        <div class="card-body">
+                                            <p class="card-text value"><strong>R$ ' . number_format($produto["preco"], 2, ',', '.') . '</strong></p>
+                                            <p class="card-text">' . $produto["nome_produto"] . '</p>
+                                            <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary decrement" type="button" >-</button>
+                                            </div>
+                                            <input type="text" class="form-control quantity" value="1" >
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary increment" type="button">+</button>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>';
+                     }
+                    ?>
                 </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/calendario.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 19,99</strong></p>
-                          <p class="card-text">Calendário de Papel Semente</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/caneta.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 2,99</strong></p>
-                          <p class="card-text">Caneta de Papel Kraft</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/canudo.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 99,99</strong></p>
-                          <p class="card-text">Canudo de Aço Inox</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/copo.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 4,99</strong></p>
-                          <p class="card-text">Copo de Papel de Fibras</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/ecobag.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 69,99</strong></p>
-                          <p class="card-text">EcoBag</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/escova.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 19,99</strong></p>
-                          <p class="card-text">Escova Dental de Bambu</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-                <div class="col col-md-3">
-                  <div class="card">
-                      <img src="imagens/produtos/esponja.PNG" class="card-image" alt="Produto">
-                      <div class="card-body">
-                          <p class="card-text value"><strong>R$ 9,99</strong></p>
-                          <p class="card-text">Esponja Natural</p>
-                          <div class="input-group mb-3">
-                              <div class="input-group-prepend">
-                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                              </div>
-                              <input type="text" class="form-control quantity" value="1">
-                              <div class="input-group-append">
-                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
-                              </div>
-                          </div>
-                          <a href="comprar.html" class="btn btn-primary">Comprar</a>
-                      </div>
-                    </div>
-                </div>
-            
-              </div>
-          </div>
-        </div>
       </section>
     </main>
 

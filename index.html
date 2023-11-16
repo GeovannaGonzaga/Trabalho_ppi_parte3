@@ -11,59 +11,62 @@
   </head>
   <body>
 
-    <nav class="navbar navbar-light navbar-container" id="navbar">
-      <div class="home"><a href="index.html"> <img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
-      <form class="d-flex form-container">
-          <input class="form-control me-2" type="search" placeholder="busque aqui o produto desejado" aria-label="Search">
-          <button class="btn btn-outline" type="submit">search</button>
-      </form>
-      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-          <span class="navbar-toggler-icon"></span>
-      </button>
+    <header>
+      <nav class="navbar navbar-light navbar-container" id="navbar">
+        <div class="home"><a href="index.html"> <img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
+        <form class="d-flex form-container">
+            <input class="form-control me-2" type="search" placeholder="busque aqui o produto desejado" aria-label="Search">
+            <button class="btn btn-outline" type="submit">search</button>
+        </form>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header border-bottom border-3 border-primary">
+              <a href="login.php" style="text-decoration: none;">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                      <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, faça seu login ou cadastre-se
+                  </h5>
+              </a>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <br>
+          <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1">
+                  <li class="nav-item">
+                      <p class="Information">Serviços</p>
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.html">
+                        <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
+                      </a>
+                      <!-- <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
+                        <p class="Options"><img src="https://img.icons8.com/ios-glyphs/22/127dbb/inspection.png"> Administração do Sistema</p>
+                      </a> -->
+                      <!-- <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
+                        <p class="Options"><img src="https://img.icons8.com/ios/23/127dbb/rating.png"> Avaliações</p>
+                      </a> -->
+                      <!-- <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
+                        <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/sale.png"> Meus Cupons</p>
+                      </a> -->
+  
+                      <br><p class="Information">Sobre o app</p>
+  
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.html">
+                        <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
+                      </a>
+  
+                      <br><p class="Information">Central de atendimento</p>
+  
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="fale.html">
+                        <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
+                      </a>
+  
+                  </li>
+          </div>
+      </nav>
+    </header>
 
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header border-bottom border-3 border-primary">
-            <a href="login.php" style="text-decoration: none;">
-                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                    <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, faça seu login ou cadastre-se
-                </h5>
-            </a>
-            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-        </div>
-        <br>
-        <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1">
-                <li class="nav-item">
-                    <p class="Information">Serviços</p>
-                    <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.html">
-                      <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
-                    </a>
-                    <!-- <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
-                      <p class="Options"><img src="https://img.icons8.com/ios-glyphs/22/127dbb/inspection.png"> Administração do Sistema</p>
-                    </a> -->
-                    <!-- <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
-                      <p class="Options"><img src="https://img.icons8.com/ios/23/127dbb/rating.png"> Avaliações</p>
-                    </a> -->
-                    <!-- <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
-                      <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/sale.png"> Meus Cupons</p>
-                    </a> -->
-
-                    <br><p class="Information">Sobre o app</p>
-
-                    <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.html">
-                      <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
-                    </a>
-
-                    <br><p class="Information">Central de atendimento</p>
-
-                    <a class="nav-link active border-bottom border-top" aria-current="page" href="fale.html">
-                      <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
-                    </a>
-
-                </li>
-        </div>
-    </nav>
-
+    <main>
       <section id="slides">
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
@@ -114,14 +117,15 @@
           </div>
         </div>
       </section><br><br><br>
+    </main>
 
-      <footer class="container-fluid">
-        <img src="imagens/logo/2-removebg-preview.png" alt="logo">
-        <p>Para entrar em contato, envie um email para: <a href="contato@example.com">contato@example.com</a></p>
-        <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
-      </footer>
+    <footer class="container-fluid">
+      <img src="imagens/logo/2-removebg-preview.png" alt="logo">
+      <p>Para entrar em contato, envie um email para: <a href="contato@example.com">contato@example.com</a></p>
+      <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
+    </footer>
 
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-      <script src="verificacao.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="verificacao.js"></script>
   </body>
 </html>

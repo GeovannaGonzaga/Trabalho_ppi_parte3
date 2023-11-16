@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 header("Location: ../User/pagina_usuario.php");
             } elseif ($tipoCadastro == "Administrador") {
                 echo " Redirecionando para Administrador";
-                header("Location: ../Administrador/admin_control.php");
+                header("Location: ../Administrador/produtos_admin.php");
             } else {
                 echo " Tipo de Cadastro inválido";
                 header("Location: ../login.php?erro=1");
