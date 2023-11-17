@@ -32,7 +32,6 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -40,6 +39,7 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <link href="../bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="excluir_produto.php"></script>
     <link href="produtos.css" rel="stylesheet">
     <link href="nav.css" rel="stylesheet">
     <title>Bios</title>
@@ -121,8 +121,8 @@ $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <p class="card-text value"><strong>R$ ' . number_format($produto["preco"], 2, ',', '.') . '</strong></p>
                                             <p class="card-text">' . $produto["nome_produto"] . '</p>
                                             <div class="d-flex">
-                                                <button class="btn btn-primary edit-button">Editar</button>
-                                                <button class="btn btn-danger delete-button">Excluir</button>
+                                                <a href="editar_produto.php?id=' . $produto['id'] . '" class="btn btn-primary edit-button">Editar</a>
+                                                <a href="excluir_produto.php?id=' . $produto['id'] . '" class="btn btn-danger delete-button">Excluir</a>
                                             </div>
                                         </div>
                                     </div>

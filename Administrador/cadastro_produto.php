@@ -48,7 +48,7 @@
 
             <?php
               if (isset($_GET["erro"]) && $_GET["erro"] == 1) {
-                  echo '<p class="error-message">Erro ao cadastrar produto. Por favor, tente novamente com uma imagem valida.</p>';
+                  echo '<p class="error-message">Erro ao cadastrar produto. Por favor, tente novamente com uma imagem valida. No momento só aceitamo imagem em formato png</p>';
               }
             ?>
         </form>

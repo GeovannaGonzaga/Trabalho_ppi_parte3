@@ -26,16 +26,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $stmt->execute();
 
-            echo "Cadastro realizado com sucesso!";
+            // Redirecionamento antes de qualquer saída
             header("Location: ../Administrador/cadastro_produto.php");
             exit();
         } catch (PDOException $e) {
-            echo "Erro ao cadastrar produto. Por favor, tente novamente.";
+            // Em caso de erro, redirecionar com mensagem de erro
+            header("Location: ../Administrador/cadastro_produto.php?erro=1");
             exit();
+        } finally {
+            $conexao->fecharConexao();
         }
-
-        $conexao->fecharConexao();
     } else {
+        // Em caso de imagem inválida, redirecionar com mensagem de erro
         header("Location: ../Administrador/cadastro_produto.php?erro=1");
         exit();
     }
