@@ -43,9 +43,12 @@
               </div>
             </div>
 
-            <div class="col-auto">
-              <button type="submit" class="btn btn-primary">Enviar</button>
-            </div>
+            <form action="pagina_usuario.php" method="get">
+              <div class="col-auto">
+                <button type="submit" class="btn btn-primary">Enviar</button>
+              </div>
+            </form>
+
       </div>
     <form>
   </main>

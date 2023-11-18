@@ -9,7 +9,7 @@ function validarDataNascimento(inputElement) {
       isValid = false;
       inputElement.classList.add("invalid");
       if (document.getElementById("DataError").innerText === "") {
-        document.getElementById("DataError").innerText = "Preencha o campo com uma senha valida.";
+        document.getElementById("DataError").innerText = "Preencha o campo com uma Data inválida.";
       }
     } else {
       input.classList.remove("invalid");
