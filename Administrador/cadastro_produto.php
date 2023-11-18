@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="utf-8">
@@ -11,17 +11,18 @@
   <body>
 
     <header>
-      <div class ="home"><a href="produtos_admin.php"> <img src="imagens/logo/1-removebg-preview.png" alt="logo"></a></div> 
+      <div class="home"><a href="produtos_admin.php"> <img src="imagens/logo/1-removebg-preview.png" alt="logo"></a></div> 
     </header>
 
     <main>
       <div class="cadastro"> <p><img src="https://img.icons8.com/small/40/127dbb/add-user-male.png"> Cadastre seu produto</p></div>
       <div class="telacadastro">
-        <form  id="cadastro-form" action="../PHP/processar_cadastro_produto.php" method="post" enctype="multipart/form-data">
+        <form id="cadastro-form" action="../PHP/processar_cadastro_produto.php" method="post" enctype="multipart/form-data" onsubmit="return validarFormulario();">
             <div class="row mb-3">
               <div class="col-sm-12 form-floating">
                   <input type="text" class="form-control" id="Produto" name="Produto" placeholder="Nome Produto">
                   <label for="floatingInput">Nome do produto:</label>
+                  <span id="NomeError" class="error-message"></span>
               </div>
             </div>
             <div class="row mb-3">
@@ -35,6 +36,7 @@
               <div class="col-sm-12 form-floating">
                   <input type="text" class="form-control" id="Categoria" name="Categoria" placeholder="Categoria">
                   <label for="floatingInput">Categoria:</label>
+                  <span id="CategoriaError" class="error-message"></span>
               </div>
             </div>
             <div class="row mb-3">
@@ -42,17 +44,17 @@
                 <input type="file" class="form-control" id="fileInput" name="imagem" accept="image/*">
               </div>
             </div>                 
-            <div class="col-auto ">
-              <button  type="submit" class="btn btn-primary"id="Cadastro" ><a class="text-white text-decoration-none" href="produtos_admin.html"> Cadastrar</a></button>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary" id="Cadastro"><a class="text-white text-decoration-none" href="produtos_admin.html">Cadastrar</a></button>
             </div>
 
             <?php
               if (isset($_GET["erro"]) && $_GET["erro"] == 1) {
-                  echo '<p class="error-message">Erro ao cadastrar produto. Por favor, tente novamente com uma imagem valida. No momento só aceitamo imagem em formato png</p>';
+                  echo '<p class="error-message">Erro ao cadastrar produto. Por favor, tente novamente com uma imagem válida. No momento, só aceitamos imagem em formato png.</p>';
               }
             ?>
         </form>
-    </div><br>
+      </div><br>
     </main>
 
     <footer class="container-fluid">
