@@ -94,3 +94,30 @@ document.getElementById("close-form").addEventListener("click", function () {
           // Se todos os campos estiverem corretos, o formulário pode ser enviado
           document.getElementById("formulario").submit();
         }
+
+
+        
+function exibirModal() {
+  var modalContent = document.getElementById('conteudo-modal');
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+      if (this.readyState == 4 && this.status == 200) {
+          modalContent.innerHTML = this.responseText;
+      }
+  };
+  xhttp.open("GET", "termos-lgpd.html", true);
+  xhttp.send();
+
+  // Exibe o modal
+  document.getElementById('modal').style.display = 'block';
+  document.getElementById('overlay').style.display = 'block';
+}
+
+// Função para aceitar os termos
+function aceitarTermos() {
+    alert('Termos aceitos!');
+    document.getElementById('modal').style.display = 'none';
+    document.getElementById('overlay').style.display = 'none';
+}
+
+window.onload = exibirModal;
