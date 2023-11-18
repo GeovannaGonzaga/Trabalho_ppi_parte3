@@ -13,7 +13,7 @@
 
   <header>
     <div class="home">
-      <a href="index.php">
+      <a href="index.html">
         <img src="imagens/logo/1-removebg-preview.png" alt="logo">
       </a>
     </div>

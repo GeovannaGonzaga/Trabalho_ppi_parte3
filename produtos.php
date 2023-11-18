@@ -46,15 +46,15 @@ $conexao->fecharConexao();
   <body>
 
   <header>
-    <nav class="navbar navbar-light navbar-container" id="navbar">  
-        <div class="home"><a href="pagina_usuario.php"><img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
-        <form class="d-flex form-container">
-            <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search" name="termo_pesquisa">
-            <button class="btn btn-outline" type="submit">Pesquisar</button>
-        </form>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="navbar navbar-light navbar-container" id="navbar">
+      <div class="home"><a href="index.html"> <img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
+          <form class="d-flex form-container">
+              <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search" name="termo_pesquisa">
+              <button class="btn btn-outline" type="submit">Pesquisar</button>
+          </form>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+              <span class="navbar-toggler-icon"></span>
+          </button>
   
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header border-bottom border-3 border-primary">
@@ -70,7 +70,7 @@ $conexao->fecharConexao();
               <ul class="navbar-nav justify-content-end flex-grow-1">
                   <li class="nav-item">
                       <p class="Information">Serviços</p>
-                      <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.html">
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.php">
                         <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
                       </a>
   
@@ -88,11 +88,10 @@ $conexao->fecharConexao();
   
                   </li>
           </div>
-      </nav>  
+      </nav>
     </header>
-    
-    
 
+    
     <main>
 
       <p class="title-products" >Produtos</p>
@@ -133,7 +132,7 @@ $conexao->fecharConexao();
         <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
     </footer>
         
-        <script src="../bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
         <script src="../Validations/produtos.js"></script>
 
   </body>
