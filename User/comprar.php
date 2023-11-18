@@ -4,30 +4,34 @@ include('../PHP/conexao.php');
 $conexao = new Conexao();
 $conn = $conexao->conexao;
 
-// Verifica se há um termo de pesquisa na URL
-$termo_pesquisa = isset($_GET['termo_pesquisa']) ? $_GET['termo_pesquisa'] : '';
+// Certifique-se de obter o ID do produto da URL
+$produto_id = isset($_GET['id']) ? $_GET['id'] : null;
 
-// Modifica a consulta SQL para incluir a cláusula WHERE com base no termo de pesquisa
-$query = "SELECT * FROM produtos";
-if (!empty($termo_pesquisa)) {
-    $query .= " WHERE nome_produto LIKE :termo_pesquisa 
-                OR categoria LIKE :termo_pesquisa 
-                OR preco LIKE :termo_pesquisa";
+// Adicione a lógica para buscar os detalhes do produto com base no ID
+// Substitua isso com a lógica real do seu aplicativo
+$detalhes_produto = obterDetalhesDoProdutoPorID($produto_id, $conn);
+
+// Função fictícia para obter detalhes do produto por ID
+function obterDetalhesDoProdutoPorID($produto_id, $conn) {
+    // Consulta SQL para obter os detalhes do produto
+    $query = "SELECT * FROM produtos WHERE id = :id";
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id', $produto_id, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    // Use fetch para obter apenas uma linha
+    $produto = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $produto; // Certifique-se de retornar o resultado
 }
 
-// Prepara e executa a consulta SQL
-$stmt = $conn->prepare($query);
 
-if (!empty($termo_pesquisa)) {
-    $termo_pesquisa_like = "%$termo_pesquisa%";
-    $stmt->bindParam(':termo_pesquisa', $termo_pesquisa_like, PDO::PARAM_STR);
+function inserirAvaliacao($produto_id, $usuario_id, $comentario, $classificacao) {
+  // Adicione lógica para inserir dados na tabela de avaliações
 }
 
-$stmt->execute();
-$produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$conexao->fecharConexao();
+
 ?>
-
 
 <!doctype html>
 <html lang="pt-br">
@@ -36,12 +40,12 @@ $conexao->fecharConexao();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="../bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="User/produtos_adm.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="comprar.css" rel="stylesheet">
     <title> Bios </title>
   </head>
   <body>
-    
+
     <header>
         <nav class="navbar navbar-light navbar-container" id="navbar">  
         <div class="home"><a href="pagina_usuario.php"><img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
@@ -107,38 +111,57 @@ $conexao->fecharConexao();
         </div>
         </nav>
     </header>
+    
+    <main class="container">
+        <h1 class="mt-3">Detalhes do Produto</h1>
 
-    <main>
-      <p class="title-products" >Produtos</p>
-      <section id="conteudo">
+        <div class="produto-container mt-4">
+            <div class="row">
+                <div class="col-md-4 col-sm-12">
+                    <?php
+                    echo '<img src="data:image/png;base64,' . base64_encode($detalhes_produto['imagem']) . '" class="card-image img-fluid rounded" alt="' . $detalhes_produto["nome_produto"] . '">';
+                    ?>
+                </div>
 
-          <div class="row" class="edita">
-                <?php
-                    foreach ($produtos as $produto) {
-                        echo '<div class="col-md-6 col-sm-12 col-lg-3">
-                                <div class="card"> 
-                                    <img src="data:image/png;base64,' . base64_encode($produto['imagem']) . '" class="card-image" alt="' . $produto["nome_produto"] . '">
-                                    <div class="card-body">
-                                        <p class="card-text value"><strong>R$ ' . number_format($produto["preco"], 2, ',', '.') . '</strong></p>
-                                        <p class="card-text">' . $produto["nome_produto"] . '</p>
-                                        <div class="input-group mb-3">
-                                            <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary decrement" type="button">-</button>
-                                            </div>
-                                            <input type="text" class="form-control quantity" value="1">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-outline-secondary increment" type="button">+</button>
-                                            </div>
-                                        </div>
-                                        <a class="btn btn-primary btn-comprar" href="comprar.php?id=' . $produto['id'] . '">Comprar</a>
-                                    </div>
-                                </div>
-                            </div>';
+                <div class="col-md-8 col-sm-12">
+                    <?php
+                    if (!empty($detalhes_produto)) {
+                        echo '<h2>' . $detalhes_produto['nome_produto'] . '</h2>';
+                        echo '<p class="description"><strong>Descrição:</strong> ' . $detalhes_produto['categoria'] . '</p>';
+                        echo '<p class="price">Preço: <strong> R$ ' . number_format($detalhes_produto['preco'], 2, ',', '.') . '</strong></p>';
+                        // Adicione mais detalhes conforme necessário
+                    } else {
+                        echo '<p>Produto não encontrado.</p>';
                     }
-                ?>
-
+                    ?>
+                    <div class="d-flex fixar-no-fim " class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between mt-3">
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                  <button class="btn btn-outline-secondary decrement" type="button">-</button>
+                              </div>
+                              <input type="text" class="form-control quantity" value="1">
+                              <div class="input-group-append">
+                                  <button class="btn btn-outline-secondary increment" type="button">+</button>
+                              </div>
+                          </div>
+                          <a href="../pagamento.html" class="btn btn-primary ml-2">Comprar</a>
+                    </div>
+                </div>
             </div>
-      </section>
+
+
+              <div class="mt-4 " class="col-md-4 col-sm-12">
+                  <h3>Avaliações</h3>
+                  <div class="alert alert-info">
+                      <strong>Usuário 1:</strong> Ótimo produto! 5 estrelas.
+                  </div>
+                  <div class="alert alert-info">
+                      <strong>Usuário 2:</strong> Produto de alta qualidade. 4 estrelas.
+                  </div>
+                  <!-- Adicione mais avaliações aqui -->
+              </div>       
+      </div>
+      
     </main>
 
     <footer class="container-fluid">
@@ -146,9 +169,9 @@ $conexao->fecharConexao();
         <p>Para entrar em contato, envie um email para: <a href="contato@example.com">contato@example.com</a></p>
         <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
     </footer>
-        
-        <script src="../bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../Validations/produtos.js"></script>
+
+    <script src="../bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Validations/produtos.js"></script>
 
   </body>
 </html>

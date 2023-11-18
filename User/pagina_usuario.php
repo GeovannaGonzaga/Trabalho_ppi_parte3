@@ -12,7 +12,7 @@
     <nav class="navbar navbar-light navbar-container" id="navbar">  
       <div class="home"><a href="pagina_usuario.php"><img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
       <form class="d-flex form-container">
-          <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search">
+          <input class="form-control me-2" type="search" placeholder="Busque aqui " aria-label="Search">
           <button class="btn btn-outline" type="submit">Pesquisar</button>
       </form>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">

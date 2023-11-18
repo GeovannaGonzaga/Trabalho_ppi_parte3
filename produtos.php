@@ -1,5 +1,5 @@
 <?php
-include('../PHP/conexao.php');
+include('PHP/conexao.php');
 
 $conexao = new Conexao();
 $conn = $conexao->conexao;
@@ -35,15 +35,18 @@ $conexao->fecharConexao();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="../bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="User/produtos_adm.css" rel="stylesheet">
+    <link href="bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+  
     <link href="style.css" rel="stylesheet">
+    <link href="User/produtos_adm.css" rel="stylesheet">
+    
+
     <title> Bios </title>
   </head>
   <body>
-    
-    <header>
-        <nav class="navbar navbar-light navbar-container" id="navbar">  
+
+  <header>
+    <nav class="navbar navbar-light navbar-container" id="navbar">  
         <div class="home"><a href="pagina_usuario.php"><img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
         <form class="d-flex form-container">
             <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search" name="termo_pesquisa">
@@ -52,63 +55,46 @@ $conexao->fecharConexao();
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
         </button>
-
+  
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-            <div class="offcanvas-header border-bottom border-3 border-primary">
-                <a href="../login.php" style="text-decoration: none;">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel"> 
-                        <img src="https://img.icons8.com/pastel-glyph/35/127dbb/person-male--v2.png"/>
-                            <?php
-                            session_start();
-                            if (isset($_SESSION['emailInput'])) {
-                                echo "Olá, " . $_SESSION['emailInput'] . "!";  
-                            } else {
-                                echo "Sessão não encontrada. Faça login novamente.";
-                                // Adicione redirecionamento para a página de login, se necessário
-                            }
-                            ?>
-                    </h5>
-                </a>
-                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
-            </div>
-            <br>
-            <div class="offcanvas-body">
-            <ul class="navbar-nav justify-content-end flex-grow-1">
-                <li class="nav-item">
-
-                <p class="Information">Serviços</p>
-                <a class="nav-link active border-bottom border-top" href="produtos.php">
-                    <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
-                </a>
-                <br>
-
-                <p class="Information">Sobre o app</p>
-                    <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.php">
+          <div class="offcanvas-header border-bottom border-3 border-primary">
+              <a href="login.php" style="text-decoration: none;">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                      <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, faça seu login ou cadastre-se
+                  </h5>
+              </a>
+              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <br>
+          <div class="offcanvas-body">
+              <ul class="navbar-nav justify-content-end flex-grow-1">
+                  <li class="nav-item">
+                      <p class="Information">Serviços</p>
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.html">
+                        <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
+                      </a>
+  
+                      <br><p class="Information">Sobre o app</p>
+  
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.html">
                         <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
-                    </a>
-                    <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
-                        <p class="Options"><img src="https://img.icons8.com/ios/22/127dbb/settings.png"> Configurações</p>
-                    </a>
-                <br>
-
-                <p class="Information">Central de atendimento</p>
-                <a class="nav-link active border-bottom border-top" href="fale.php">
-                    <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
-                </a>
-                <br>
-                
-                <p class="Information">Sair</p>
-                <a class="nav-link active border-bottom border-top" href="../index.html">
-                    <p class="Options"><img src="https://img.icons8.com/ios/19/127dbb/exit--v1.png"/> Sair</p>
-                </a>
-                </li>
-            </ul>
-            </div>
-        </div>
-        </nav>
+                      </a>
+  
+                      <br><p class="Information">Central de atendimento</p>
+  
+                      <a class="nav-link active border-bottom border-top" aria-current="page" href="fale.html">
+                        <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
+                      </a>
+  
+                  </li>
+          </div>
+      </nav>  
     </header>
+    
+    
 
     <main>
+
       <p class="title-products" >Produtos</p>
       <section id="conteudo">
 
@@ -130,7 +116,7 @@ $conexao->fecharConexao();
                                                 <button class="btn btn-outline-secondary increment" type="button">+</button>
                                             </div>
                                         </div>
-                                        <a class="btn btn-primary btn-comprar" href="comprar.php?id=' . $produto['id'] . '">Comprar</a>
+                                        <a class="btn btn-primary btn-comprar" href="login.php">Comprar</a>
                                     </div>
                                 </div>
                             </div>';
@@ -139,7 +125,7 @@ $conexao->fecharConexao();
 
             </div>
       </section>
-    </main>
+    </main> 
 
     <footer class="container-fluid">
         <img src="imagens/logo/2-removebg-preview.png" alt="logo">
