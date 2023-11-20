@@ -1,15 +1,15 @@
 <?php
-include('PHP/conexao.php');
+include('../PHP/conexao.php');
 
 $conexao = new Conexao();
 $conn = $conexao->conexao;
 
-$produto_id = isset($_GET['id']) ? $_GET['id'] : null;
+$produto_id = isset($_GET['id']) ? $_GET['id'] : '';
+$quantidade = isset($_GET['quantidade']) ? intval($_GET['quantidade']) : 1;
 
 $detalhes_produto = obterDetalhesDoProdutoPorID($produto_id, $conn);
 
 function obterDetalhesDoProdutoPorID($produto_id, $conn) {
-
     $query = "SELECT * FROM produtos WHERE id = :id";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id', $produto_id, PDO::PARAM_INT);
@@ -17,15 +17,8 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
     
     $produto = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $produto;
+    return $produto; 
 }
-
-
-function inserirAvaliacao($produto_id, $usuario_id, $comentario, $classificacao) {
-  // Adicione lógica para inserir dados na tabela de avaliações
-}
-
-
 ?>
 
 <!doctype html>
@@ -35,6 +28,7 @@ function inserirAvaliacao($produto_id, $usuario_id, $comentario, $classificacao)
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="../bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="nav.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href="comprar.css" rel="stylesheet">
     <title> Bios </title>
@@ -63,7 +57,6 @@ function inserirAvaliacao($produto_id, $usuario_id, $comentario, $classificacao)
                                 echo "Olá, " . $_SESSION['emailInput'] . "!";  
                             } else {
                                 echo "Sessão não encontrada. Faça login novamente.";
-                                // Adicione redirecionamento para a página de login, se necessário
                             }
                             ?>
                     </h5>
@@ -123,18 +116,20 @@ function inserirAvaliacao($produto_id, $usuario_id, $comentario, $classificacao)
                     if (!empty($detalhes_produto)) {
                         echo '<h2>' . $detalhes_produto['nome_produto'] . '</h2>';
                         echo '<p class="description"><strong>Descrição:</strong> ' . $detalhes_produto['categoria'] . '</p>';
-                        echo '<p class="price">Preço: <strong> R$ ' . number_format($detalhes_produto['preco'], 2, ',', '.') . '</strong></p>';
-                        // Adicione mais detalhes conforme necessário
+                        
+                        // Calcular o preço total
+                        $preco_total = $detalhes_produto['preco'] * $quantidade;
+                        echo '<p class="price"> <strong>Preço total:</strong>  ' 'R$ ' . number_format($preco_total, 2, ',', '.') . '</p>';
                     } else {
                         echo '<p>Produto não encontrado.</p>';
                     }
                     ?>
-                    <div class="d-flex fixar-no-fim " class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between mt-3">
-                          <a class="btn btn-primary ml-2"href="../pagamento.php?id=' . $produto['id'] . '">Finalizar</a>
-                    </div>
+                    <a class="btn btn-primary btn-comprar" href="../User/produtos.php?id=<?php echo $produto_id; ?>&quantidade=<?php echo $quantidade; ?>" class="btn-comprar" data-product-id="<?php echo $produto_id; ?>">finalizar</a>
                 </div>
             </div>
-      
+    
+                </div>
+            </div>     
       </div>
       
     </main>
