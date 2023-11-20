@@ -45,54 +45,55 @@ $conexao->fecharConexao();
   </head>
   <body>
 
-  <header>
-    <nav class="navbar navbar-light navbar-container" id="navbar">
-      <div class="home"><a href="index.html"> <img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
-          <form class="d-flex form-container">
-              <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search" name="termo_pesquisa">
-              <button class="btn btn-outline" type="submit">Pesquisar</button>
-          </form>
-          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-              <span class="navbar-toggler-icon"></span>
-          </button>
-  
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-          <div class="offcanvas-header border-bottom border-3 border-primary">
-              <a href="login.php" style="text-decoration: none;">
-                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-                      <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, faça seu login ou cadastre-se
-                  </h5>
-              </a>
-              <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-          </div>
-          <br>
-          <div class="offcanvas-body">
-              <ul class="navbar-nav justify-content-end flex-grow-1">
-                  <li class="nav-item">
-                      <p class="Information">Serviços</p>
-                      <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.php">
-                        <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
-                      </a>
-  
-                      <br><p class="Information">Sobre o app</p>
-  
-                      <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.html">
-                        <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
-                      </a>
-  
-                      <br><p class="Information">Central de atendimento</p>
-  
-                      <a class="nav-link active border-bottom border-top" aria-current="page" href="fale.html">
-                        <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
-                      </a>
-  
-                  </li>
-          </div>
+    <header>
+      <nav class="navbar navbar-light navbar-container" id="navbar">
+        <div class="home"><a href="index.html"> <img src="imagens/logo/2-removebg-preview.png" alt="logo"></a></div>
+            <form class="d-flex form-container">
+                <input class="form-control me-2" type="search" placeholder="Busque aqui o produto desejado" aria-label="Search" name="termo_pesquisa">
+                <button class="btn btn-outline" type="submit">Pesquisar</button>
+            </form>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header border-bottom border-3 border-primary">
+                <a href="login.php" style="text-decoration: none;">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+                        <img src="https://img.icons8.com/pastel-glyph/40/127dbb/person-male--v2.png"/> Olá, faça seu login ou cadastre-se
+                    </h5>
+                </a>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <br>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1">
+                    <li class="nav-item">
+                        <p class="Information">Serviços</p>
+                        <a class="nav-link active border-bottom border-top" aria-current="page" href="produtos.php">
+                          <p class="Options"><img src="https://img.icons8.com/pastel-glyph/25/127dbb/shopping-bag--v3.png"> Produtos</p>
+                        </a>
+    
+                        <br><p class="Information">Sobre o app</p>
+    
+                        <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.html">
+                          <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
+                        </a>
+    
+                        <br><p class="Information">Central de atendimento</p>
+    
+                        <a class="nav-link active border-bottom border-top" aria-current="page" href="fale.html">
+                          <p class="Options"><img src="https://img.icons8.com/ios/24/127dbb/speech-bubble-with-dots.png"> Fale Conosco</p>
+                        </a>
+    
+                    </li>
+            </div>
       </nav>
     </header>
 
     
     <main>
+
 
       <p class="title-products" >Produtos</p>
       <section id="conteudo">
@@ -126,14 +127,16 @@ $conexao->fecharConexao();
       </section>
     </main> 
 
+
     <footer class="container-fluid">
         <img src="imagens/logo/2-removebg-preview.png" alt="logo">
         <p>Para entrar em contato, envie um email para: <a href="contato@example.com">contato@example.com</a></p>
         <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
     </footer>
         
-        <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
-        <script src="../Validations/produtos.js"></script>
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Validations/produtos.js"></script>
 
+  
   </body>
 </html>

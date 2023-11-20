@@ -1,38 +1,35 @@
-// const stars = document.querySelectorAll('.star');
-          
-// stars.forEach((star, index) => {
-//     star.addEventListener('click', () => {
-//         const starRating = star.getAttribute('data-star');
-//         alert(`Você avaliou com ${starRating} estrelas.`);
-//         // Adicione a classe 'filled' para mudar o ícone da estrela clicada
-//         star.classList.add('filled');
-//         star.src = "https://img.icons8.com/small/25/ffcb0c/filled-star.png";
-//         // Adicione a classe 'filled' e altere o ícone para todas as estrelas anteriores
-//         for (let i = 0; i < index; i++) {
-//             stars[i].classList.add('filled');
-//             stars[i].src = "https://img.icons8.com/small/25/ffcb0c/filled-star.png";
-//         }
-//     });
-// });
-              
+document.addEventListener("DOMContentLoaded", function () {
+    // Adiciona um ouvinte de evento para cada botão de decremento
+    document.querySelectorAll(".decrement").forEach(function (button) {
+        button.addEventListener("click", function () {
+            updateQuantity(button, -1);
+        });
+    });
 
-var quantityInputs = document.querySelectorAll('.quantity');
-var incrementButtons = document.querySelectorAll('.increment');
-var decrementButtons = document.querySelectorAll('.decrement');
-
-incrementButtons.forEach(function (button, index) {
-    button.addEventListener('click', function () {
-        var currentQuantity = parseInt(quantityInputs[index].value);
-        quantityInputs[index].value = currentQuantity + 1;
+    // Adiciona um ouvinte de evento para cada botão de incremento
+    document.querySelectorAll(".increment").forEach(function (button) {
+        button.addEventListener("click", function () {
+            updateQuantity(button, 1);
+        });
     });
 });
 
-decrementButtons.forEach(function (button, index) {
-    button.addEventListener('click', function () {
-        var currentQuantity = parseInt(quantityInputs[index].value);
-        if (currentQuantity > 1) {
-            quantityInputs[index].value = currentQuantity - 1;
-        }
-    });
-});        
+function updateQuantity(button, increment) {
+    // Obtém o ID do produto e a quantidade atual
+    var productId = button.getAttribute("data-product-id");
+    var inputQuantity = document.querySelector('.quantity[data-product-id="' + productId + '"]');
+    var currentQuantity = parseInt(inputQuantity.value);
+
+    // Atualiza a quantidade com o incremento
+    var newQuantity = currentQuantity + increment;
+
+    // Certifica-se de que a quantidade não seja negativa
+    newQuantity = Math.max(newQuantity, 0);
+
+    // Atualiza o valor do campo de quantidade
+    inputQuantity.value = newQuantity;
     
+    // Atualiza o link de compra com a nova quantidade
+    var buyLink = document.querySelector('.btn-comprar[data-product-id="' + productId + '"]');
+    buyLink.href = 'comprar.php?id=' + productId + '&quantidade=' + newQuantity;
+}

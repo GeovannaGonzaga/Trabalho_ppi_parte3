@@ -84,7 +84,7 @@
             </div>
             <div class="carousel-inner ">
               <div class="carousel-item active">
-                <img src="imagens/Modal/Slide1.PNG" class="img-fluid" alt="Bios"> <!-- https://source.unsplash.com/1400x500/?jakets < em 1400x500 coloca a altura e largura> <depois do ? coloca o nome do que voce quer ver> -->
+                <img src="imagens/Modal/Slide1.PNG" class="img-fluid" alt="Bios"> 
               </div>
               <div class="carousel-item">
                 <img src="imagens/Modal/Slide2.PNG" class="d-block w-100" alt="Bios">

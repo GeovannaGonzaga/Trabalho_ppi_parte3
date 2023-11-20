@@ -1,15 +1,15 @@
 <?php
-include('../PHP/conexao.php');
+include('PHP/conexao.php');
 
 $conexao = new Conexao();
 $conn = $conexao->conexao;
 
-$produto_id = isset($_GET['id']) ? $_GET['id'] : '';
-$quantidade = isset($_GET['quantidade']) ? intval($_GET['quantidade']) : 1;
+$produto_id = isset($_GET['id']) ? $_GET['id'] : null;
 
 $detalhes_produto = obterDetalhesDoProdutoPorID($produto_id, $conn);
 
 function obterDetalhesDoProdutoPorID($produto_id, $conn) {
+
     $query = "SELECT * FROM produtos WHERE id = :id";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':id', $produto_id, PDO::PARAM_INT);
@@ -17,8 +17,15 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
     
     $produto = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    return $produto; 
+    return $produto;
 }
+
+
+function inserirAvaliacao($produto_id, $usuario_id, $comentario, $classificacao) {
+  // Adicione lógica para inserir dados na tabela de avaliações
+}
+
+
 ?>
 
 <!doctype html>
@@ -56,6 +63,7 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
                                 echo "Olá, " . $_SESSION['emailInput'] . "!";  
                             } else {
                                 echo "Sessão não encontrada. Faça login novamente.";
+                                // Adicione redirecionamento para a página de login, se necessário
                             }
                             ?>
                     </h5>
@@ -116,40 +124,17 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
                         echo '<h2>' . $detalhes_produto['nome_produto'] . '</h2>';
                         echo '<p class="description"><strong>Descrição:</strong> ' . $detalhes_produto['categoria'] . '</p>';
                         echo '<p class="price">Preço: <strong> R$ ' . number_format($detalhes_produto['preco'], 2, ',', '.') . '</strong></p>';
+                        // Adicione mais detalhes conforme necessário
                     } else {
                         echo '<p>Produto não encontrado.</p>';
                     }
                     ?>
                     <div class="d-flex fixar-no-fim " class="d-flex flex-column flex-md-row align-items-md-center justify-content-md-between mt-3">
-                    <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-outline-secondary decrement" type="button" data-product-id="<?php echo $produto_id; ?>">-</button>
-                                </div>
-                                <input type="text" class="form-control quantity" value="<?php echo $quantidade; ?>" name="quantidade" data-product-id="<?php echo $produto_id; ?>">
-                                <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary increment" type="button" data-product-id="<?php echo $produto_id; ?>">+</button>
-                                </div>
-                            </div>
-                      
-                            <a class="btn btn-primary btn-comprar" href="../pagamento.php?id=<?php echo $produto_id; ?>&quantidade=<?php echo $quantidade; ?>" class="btn-comprar" data-product-id="<?php echo $produto_id; ?>">Comprar</a>
+                          <a class="btn btn-primary ml-2"href="../pagamento.php?id=' . $produto['id'] . '">Finalizar</a>
                     </div>
                 </div>
             </div>
-    
-                </div>
-            </div>
-
-
-              <div class="mt-4 " class="col-md-4 col-sm-12">
-                  <h3>Avaliações</h3>
-                  <div class="alert alert-info">
-                      <strong>Usuário 1:</strong> Ótimo produto! 5 estrelas.
-                  </div>
-                  <div class="alert alert-info">
-                      <strong>Usuário 2:</strong> Produto de alta qualidade. 4 estrelas.
-                  </div>
-                  <!-- Adicione mais avaliações aqui -->
-              </div>       
+      
       </div>
       
     </main>

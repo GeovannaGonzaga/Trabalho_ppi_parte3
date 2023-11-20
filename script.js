@@ -95,6 +95,17 @@ document.getElementById("close-form").addEventListener("click", function () {
           document.getElementById("formulario").submit();
         }
 
+        function mostrarParcelas() {
+          var tipoCartao = document.getElementById("tipoCartao").value;
+          var opcaoParcelas = document.getElementById("opcaoParcelas");
+        
+          if (tipoCartao === "2") { // Se selecionar "Crédito"
+            opcaoParcelas.style.display = "block";
+          } else {
+            opcaoParcelas.style.display = "none";
+          }
+        }
+        mostrarParcelas();
 
         
 function exibirModal() {
