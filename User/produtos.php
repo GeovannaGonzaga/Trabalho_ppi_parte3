@@ -36,7 +36,7 @@ $conexao->fecharConexao();
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link href="../bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="User/produtos_adm.css" rel="stylesheet">
+    <link href="produtos_adm.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <title> Bios </title>
   </head>

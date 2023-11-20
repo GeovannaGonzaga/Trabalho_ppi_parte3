@@ -19,6 +19,34 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
 
     return $produto; 
 }
+
+function inserirPedido($produto_id, $quantidade, $conn) {
+    // Recupere os detalhes do produto
+    $detalhes_produto = obterDetalhesDoProdutoPorID($produto_id, $conn);
+
+    // Dados do cliente
+    session_start();
+    $email_cliente = isset($_SESSION['emailInput']) ? $_SESSION['emailInput'] : '';
+
+    // Calcular o preço total
+    $preco_total = $detalhes_produto['preco'] * $quantidade;
+
+    // Inserir o pedido na tabela 'pedidos'
+    $query = "INSERT INTO pedidos (id_produto , email_cliente, quantidade, preco_total)
+              VALUES (:id_produto, :email_cliente, :quantidade, :preco_total)";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bindParam(':id_produto', $produto_id, PDO::PARAM_INT);
+    $stmt->bindParam(':email_cliente', $email_cliente, PDO::PARAM_STR);
+    $stmt->bindParam(':quantidade', $quantidade, PDO::PARAM_INT);
+    $stmt->bindParam(':preco_total', $preco_total, PDO::PARAM_STR);
+
+    $stmt->execute();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['id']) && isset($_GET['quantidade'])) {
+    inserirPedido($produto_id, $quantidade, $conn);
+}
 ?>
 
 <!doctype html>
@@ -52,7 +80,6 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
                     <h5 class="offcanvas-title" id="offcanvasNavbarLabel"> 
                         <img src="https://img.icons8.com/pastel-glyph/35/127dbb/person-male--v2.png"/>
                             <?php
-                            session_start();
                             if (isset($_SESSION['emailInput'])) {
                                 echo "Olá, " . $_SESSION['emailInput'] . "!";  
                             } else {
@@ -119,19 +146,19 @@ function obterDetalhesDoProdutoPorID($produto_id, $conn) {
                         
                         // Calcular o preço total
                         $preco_total = $detalhes_produto['preco'] * $quantidade;
-                        echo '<p class="price"> <strong>Preço total:</strong>  ' 'R$ ' . number_format($preco_total, 2, ',', '.') . '</p>';
+                        echo '<p class="price"><strong>Preço total:</strong> R$ ' . number_format($preco_total, 2, ',', '.') . '</p>';
                     } else {
                         echo '<p>Produto não encontrado.</p>';
                     }
                     ?>
-                    <a class="btn btn-primary btn-comprar" href="../User/produtos.php?id=<?php echo $produto_id; ?>&quantidade=<?php echo $quantidade; ?>" class="btn-comprar" data-product-id="<?php echo $produto_id; ?>">finalizar</a>
                 </div>
+
+                <div class="col-md-12 fixar-no-fim finalizar ">
+                <a class="btn btn-primary" href="../User/produtos.php?id=<?php echo $produto_id; ?>&quantidade=<?php echo $quantidade; ?>" class="btn-comprar" data-product-id="<?php echo $produto_id; ?>">Finalizar</a>
             </div>
-    
-                </div>
-            </div>     
-      </div>
-      
+            </div>
+            
+        </div>
     </main>
 
     <footer class="container-fluid">
