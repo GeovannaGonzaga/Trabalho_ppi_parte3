@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="bootstrap-5.3.2-dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="cadastro.css" rel="stylesheet">
+    <title>Bios</title>
+  </head>
+  <body>
+    <header>
+      <div class="home">
+        <a href="pagina_usuario.php"><img src="imagens/logo/1-removebg-preview.png" alt="logo"></a>
+      </div> 
+    </header>
+    <main>
+      <div class="cadastro">
+        <p><img src="https://img.icons8.com/small/40/127dbb/add-user-male.png"> Atualize os seus dados</p>
+      </div>
+      <div class="telacadastro">
+        <form id="cadastro-form" action="PHP/processar_cadastro.php" method="post">
+          <div class="row mb-3">
+            <div class="col-sm-12 form-floating">
+              <input type="date" class="form-control" id="nascimentoInput"  name="nascimentoInput" placeholder="Data de nascimento" onblur="validarDataNascimento(this)">
+              <label for="floatingInput">Data de Nascimento:</label>
+              <span id="DataError" class="error-message"></span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-12 form-floating">
+              <input type="text" class="form-control" id="telefoneInput" name="telefoneInput" placeholder="(00) 00000-0000" onblur="validarTelefone(this); Acpted_Number(event)"> 
+              <label for="floatingInput">Telefone:</label>
+              <span id="telefoneError" class="error-message"></span>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-12 form-floating">
+              <input type="text" class="form-control" id="emailInput" name="emailInput" placeholder="Ex. joaodasilva@gmail.com"  onblur="validarEmail(this)">
+              <label for="floatingInput">E-mail:</label>
+              <span id="EmailError" class="error-message"></span>
+            </div>
+          </div>
+          <div class="row mb-3 password">
+            <div class="form-floating">
+              <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Senha"  onblur="validarSenha(this)">
+              <label for="floatingPassword">Senha:</label>
+              <span id="passwordError" class="error-message"></span>
+            </div>
+          </div>
+          <div class="row mb-3 password">
+            <div class="col-sm-12">
+              <label for="imagemInput" class="form-label">Faça o upload de uma imagem:</label>
+              <input type="file" class="form-control" id="imagemInput" accept="image/*">
+            </div>
+          </div>
+        </form>
+      </div> 
+    </main>
+
+    <footer class="container-fluid"><br>
+      <p id="direitos">&copy;2023 Bios | Todos Direitos Reservados</p>
+    </footer>
+ 
+    <script src="script.js"></script>
+    <script src="Validations/Submit.js"></script>
+    <script src="Validations/nome.js"></script> 
+    <script src="Validations/telefone.js"></script>
+    <script src="Validations/Validar_Entrada.js"></script> 
+    <script src="Validations/cpf.js"></script>
+    <script src="Validations/email.js"></script>
+    <script src="Validations/data.js"></script>
+    <script src="Validations/senha.js"></script>
+    <script src="bootstrap-5.3.2-dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

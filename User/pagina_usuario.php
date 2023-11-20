@@ -53,7 +53,7 @@
                 <a class="nav-link active border-bottom border-top" aria-current="page" href="Sobre.php">
                     <p class="Options"><img src="https://img.icons8.com/ios/25/127dbb/alarm.png"> Sobre Nós</p>
                 </a>
-                <a class="nav-link active border-bottom border-top" aria-current="page" href="#">
+                <a class="nav-link active border-bottom border-top" aria-current="page" href="configuracao_usuario.html">
                     <p class="Options"><img src="https://img.icons8.com/ios/22/127dbb/settings.png"> Configurações</p>
                 </a>
               <br>
